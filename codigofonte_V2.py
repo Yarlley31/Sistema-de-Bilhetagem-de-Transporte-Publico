@@ -65,8 +65,7 @@ while continuar == True:
             saldo = recarga
             print(f"Você irá pagar R${valor_a_pagar:.2f}")
             
-        funcionalidade = int(input("Selecione uma de nossas funcionalidades: \n[1] Recarga \n[2] Verificar saldo\n[3] Sair do sistema\n"))
-        if funcionalidade == 2:
+        elif funcionalidade == 2:
             if saldo >= valor_a_pagar:
                 print(f"Você tem R${saldo:.2f} de saldo")
                 print("-" * 30)
