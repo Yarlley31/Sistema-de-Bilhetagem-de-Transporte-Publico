@@ -25,15 +25,14 @@ while continuar == True:
             print(f"Você irá pagar R${valor_a_pagar:.2f}")
             print("-" * 30)
         
-        # funcionalidade = int(input("Selecione uma de nossas funcionalidades: \n[1] Recarga \n[2] Verificar saldo\n[3] Sair do sistema\n"))
-        # if funcionalidade == 2:
-        #     if saldo >= valor_a_pagar:
-        #         print(f"Você tem R${saldo:.2f} de saldo")
-        #         print("-" * 30)
-        #     else:
-        #         print("Você não tem saldo suficiente!")
-        # else:
-        #     break
+        elif funcionalidade == 2:
+            if saldo >= valor_a_pagar:
+                print(f"Você tem R${saldo:.2f} de saldo")
+                print("-" * 30)
+            else:
+                print("Você não tem saldo suficiente!")
+        elif funcionalidade == 3:
+            break
         
     # categoria estudante/idoso
     elif categoria_passageiro == 2:
@@ -51,7 +50,7 @@ while continuar == True:
                 print("-" * 30)
             else:
                 print("Você não tem saldo suficiente!")
-        if funcionalidade == 3:
+        elif funcionalidade == 3:
             break
     
     
