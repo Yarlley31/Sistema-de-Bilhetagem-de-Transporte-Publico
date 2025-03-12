@@ -46,11 +46,11 @@ while continuar == True:
             saldo = recarga
             print(f"Você irá pagar R${valor_a_pagar:.2f}")
         elif funcionalidade == 2:
-            saldo >= valor_a_pagar:
-            print(f"Você tem R${saldo:.2f} de saldo")
-            print("-" * 30)
-        else:
-            print("Você não tem saldo suficiente!")
+            if saldo >= valor_a_pagar:
+                print(f"Você tem R${saldo:.2f} de saldo")
+                print("-" * 30)
+            else:
+                print("Você não tem saldo suficiente!")
         if funcionalidade == 3:
             break
     
