@@ -23,8 +23,7 @@ while continuar == True:
         if funcionalidade == 1:
             recarga = float(input("Digite o valor da recarga: R$"))
             saldo = recarga
-            valor_da_recarga = recarga
-            print(f"Você irá pagar R${valor_da_recarga:.2f}")
+            print("Recarca efetuada com sucesso")
             print("-" * 30)
             
         # faz a compra de passagens
@@ -38,7 +37,7 @@ while continuar == True:
                 
         # mostra o saldo
         elif funcionalidade == 3:
-            if saldo >= valor_da_recarga:
+            if saldo >= recarga:
                 print(f"Você tem R${saldo - valor_passagem} de saldo")
                 print("-" * 30)
             else:
