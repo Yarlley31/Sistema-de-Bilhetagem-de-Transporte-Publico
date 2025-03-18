@@ -41,7 +41,7 @@ while continuar == 1:
                 
         # mostra o saldo
         elif funcionalidade == 3:
-            if saldo >= recarga:
+            if saldo >= valor_passagem:
                 print(f"Você tem saldo suficiente para embarcar!")
             else:
                 print("Você não tem saldo suficiente!")
