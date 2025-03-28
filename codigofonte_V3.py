@@ -19,16 +19,40 @@ valor_passagem = float(valor_passagem)
 # declaração de variáveis
 continuar = 1
 funcionalidade = 0
-valor_a_pagar = 0
-recarga_total = 0
-saldo = 0
-recarga_valor_total_1 = 0
+
+# saldo de cada categoria
+
+saldo1 = 0
+saldo2 = 0
+saldo3 = 0
+
+# número de recargas realizadas por cada user
+num_recargas_1 = 0
+num_recargas_2 = 0
+num_recargas_3 = 0
+
+qntd_recarga_total = 0
+
+# número de passagens usados por cada user
+qntd_passagem_1 = 0
+qntd_passagem_2 = 0
+qntd_passagem_3 = 0
+
+# valor total gasto com passagens por cada user
+valor_total_gasto_passagem_1 = 0
+valor_total_gasto_passagem_2 = 0
+valor_total_gasto_passagem_3 = 0
+
+# saldo restante de cada user
+saldo_restante_1 = 0
+saldo_restante_2 = 0
+saldo_restante_3 = 0
 
 while continuar == 1:
 
-    categoria_passageiro = input("Selecione uma das categorias de passageiro:\n[1] padrão \n[2] estudante/idoso\n[3] social \n[4] Sair do sistema\n")
+    categoria_passageiro = input("Selecione uma das categorias de passageiro:\n[1] padrão \n[2] estudante/idoso\n[3] social \n[4] Relatório \n[5] Sair do sistema\n")
     while categoria_passageiro.isdigit() == False:
-        categoria_passageiro = input("Selecione uma das categorias de passageiro:\n[1] padrão \n[2] estudante/idoso\n[3] social \n[4] Sair do sistema\n")
+        categoria_passageiro = input("Selecione uma das categorias de passageiro:\n[1] padrão \n[2] estudante/idoso\n[3] social \n[4] Relatório \n[5] Sair do sistema\n")
         
     categoria_passageiro = int(categoria_passageiro)
     
@@ -43,41 +67,41 @@ while continuar == 1:
         
         # faz a recarga
         if funcionalidade == 1:
-            recarga_total += 1
             
             recarga = input("Digite o valor da recarga: R$")
             while recarga.isdigit() == False:
                 recarga = input("Digite o valor da recarga: R$")
             recarga = float(recarga)
-            recarga_valor_total_1 = 0
-            recarga_valor_total_1 += recarga
             print("Recarga efetuada com sucesso")
-            saldo += recarga
+            saldo1 += recarga
+            num_recargas_1 += 1
+            qntd_recarga_total += 1
             
         # faz a compra de passagens
         elif funcionalidade == 2:
-            qnt_passagem_1 = input("Quantas passagens você quer comprar: ")
-            while qnt_passagem_1.isdigit() == False:
-                qnt_passagem_1 = input("Quantas passagens você quer comprar: ")
-            qnt_passagem_1 = int(qnt_passagem_1)
+            qntd_passagem_1 = input("Quantas passagens você quer comprar: ")
+            while qntd_passagem_1.isdigit() == False:
+                qntd_passagem_1 = input("Quantas passagens você quer comprar: ")
+            qntd_passagem_1 = int(qntd_passagem_1)
             
             
-            valor_passagem *= qnt_passagem_1
-            valor_total_passagem_1 = valor_passagem
-            if saldo >= valor_passagem:
+            valor_passagem *= qntd_passagem_1
+            valor_total_gasto_passagem_1 += valor_passagem
+            if saldo1 >= valor_passagem:
                 print("Compra efetuada com sucesso!")
-                saldo -= valor_passagem
+                saldo1 -= valor_passagem
+                saldo_restante_1 = saldo1
             else:
                 print("Compra mal sucedida, devido a falta de saldo")
                 
         # mostra o saldo
         elif funcionalidade == 3:
-            if saldo >= valor_passagem:
+            print(f"E seu saldo é: R${saldo1:.2f}")
+            if saldo1 >= valor_passagem:
                 print(f"Você tem saldo suficiente para embarcar!")
-                print(f"E seu saldo é: R${saldo:.2f}")
             else:
                 print("Você não tem saldo suficiente!")
-                print(f"Seu saldo é: R${saldo:.2f}")
+                print(f"Seu saldo é: R${saldo1:.2f}")
         
         # sai do while
         elif funcionalidade == 4:
@@ -99,23 +123,39 @@ while continuar == 1:
             while recarga.isdigit() == False:
                 recarga = input("Digite o valor da recarga: R$")
             recarga = float(recarga)
-            saldo += recarga
+            saldo2 += recarga
             print("Recarga efetuada com sucesso!")
-            recarga_total += 1
+            
+            num_recargas_2 += 1
+            qntd_recarga_total += 1
+
         
         # faz a compra de passagens
         elif funcionalidade == 2:
-            qnt_passagem = int(input("Quantas passagens você quer comprar: "))
-            valor_passagem = (valor_passagem / 2) * qnt_passagem 
-            if saldo >= valor_passagem:
+            qntd_passagem_2 = input("Quantas passagens você quer comprar: ")
+            while qntd_passagem_2.isdigit() == False:
+                qntd_passagem_2 = input("Quantos passagem você quer comprar: ")
+            qntd_passagem_2 = int(qntd_passagem_2)
+            valor_passagem = (valor_passagem / 2) * qntd_passagem_2
+            
+            valor_total_gasto_passagem_2 += valor_passagem
+
+            if saldo2 >= valor_passagem:
                 print(f"Compra efetuada com sucesso!")
-                saldo -= valor_passagem
+                saldo2 -= valor_passagem
             else:
                 print("Compra mal sucedida, devido a falta de saldo")
         
         # mostra o saldo
         elif funcionalidade == 3:
-            print(f"Você tem R${saldo:.2f} de saldo")
+            print(f"E seu saldo é: R${saldo2:.2f}")
+            if saldo2 >= valor_passagem:
+                print(f"Você tem saldo suficiente para embarcar!")
+                saldo2 -= valor_passagem
+                saldo_restante_2 = saldo2
+            else:
+                print("Você não tem saldo suficiente!")
+                print(f"Seu saldo é: R${saldo2:.2f}")
         
         # sai do while
         elif funcionalidade == 4:
@@ -139,26 +179,35 @@ while continuar == 1:
             while recarga.isdigit() == False:
                 recarga = input("Digite o valor da recarga: R$")
             recarga = float(recarga)
+            saldo3 += recarga
+            print("Recarga efetuada com sucesso!")
             
-            recarga_total += 1
+            num_recargas_3 += 1
+            qntd_recarga_total += 1
             
         # faz a compra de passagens
         elif funcionalidade == 2:
-            qnt_passagem = int(input("Quantas passagens você quer comprar: "))
-            valor_passagem *= qnt_passagem
-            if saldo >= valor_passagem:
+            qntd_passagem_3 = int(input("Quantas passagens você quer comprar: "))
+            valor_passagem = (valor_passagem * 0.20) * qntd_passagem_3
+            
+            valor_total_gasto_passagem_3 += valor_passagem
+            
+            if saldo3 >= valor_passagem:
                 print("Compra efetuada com sucesso!")
+                saldo3 -= valor_passagem
+                saldo_restante_3 = saldo3
+                
             else:
                 print("Compra mal sucedida, devido a falta de saldo")
                 
         # mostra o saldo
         elif funcionalidade == 3:
-            if saldo >= valor_passagem:
+            print(f"E seu saldo é: R${saldo3:.2f}")
+            if saldo3 >= valor_passagem:
                 print(f"Você tem saldo suficiente para embarcar!")
-                print(f"E seu saldo é: R${saldo:.2f}")
             else:
                 print("Você não tem saldo suficiente!")
-                print(f"Seu saldo é: R${saldo:.2f}")
+                print(f"Seu saldo é: R${saldo3:.2f}")
 
         # sai do while
         elif funcionalidade == 4:
@@ -168,8 +217,18 @@ while continuar == 1:
     # mostra o relatório
     elif categoria_passageiro == 4:
         print("==" * 15, "Relatório", "==" * 15)
-        print(f"Total de recargas efetuadas: {recarga_total}\nValor total de recargas: R${recarga_valor_total_1:.2f}")
-    
+        
+        print(f"Quantidade de recargas total: {qntd_recarga_total}")
+        print(f"Número de recargas realizadas por cada categoria: \nPadrão: {num_recargas_1}\nEstudante/Idoso: {num_recargas_2}\nSocial: {num_recargas_3}")
+        print("-" * 35)
+        print(f"Quantidade passagens compradas por cada categoria: \nPadão: {qntd_passagem_1}\nEstudante/Idoso: {qntd_passagem_2}\nSocial: {qntd_passagem_3}")
+        print("-" * 35)
+        print(f"Valor total gasto por cada categoria: \nPadão: {valor_total_gasto_passagem_1}\nEstudante/Idoso: {valor_total_gasto_passagem_2}\nSocial: {valor_total_gasto_passagem_3}")
+        print("-" * 35)
+        print(f"O saldo restante de cada categoria é: \nPadão: {saldo_restante_1:.2f}\nEstudante/Idoso: {saldo_restante_2:.2f}\nSocial: {saldo_restante_3:.2f}")
+        print("-" * 35)
+
+
     # categoria saída
     elif categoria_passageiro == 5:
         print("Até a próxima!")    
