@@ -1,7 +1,7 @@
 """
 Autor: Yarlley Fernandes dos Santos
 Componente Curricular: Algoritmos I
-Concluido em: 14/10/2011
+Concluido em: 29/02/2025
 Declaro que este código foi elaborado por mim de forma individual e não contém nenhum
 trecho de código de outro colega ou de outro autor, tais como provindos de livros e
 apostilas, e páginas ou documentos eletrônicos da Internet. Qualquer trecho de código
